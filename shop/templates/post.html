@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3><a href="/blog/{{post.id}}">{{ post.title }}</a></h3>
+<div class="mainContent">
+<div class= "content">
+<div class = "post_meta">
+	добавлено {{ post.date }}
+</div>
+<img src="{{ MEDIA_URL }}{{post.photo}}" />
+<div class = "post_body">
+ <p class = "bold">{{ post.body|safe|linebreaks }} </p>
+ {{ post.description|safe|linebreaks }}
+</div>
+</div>
+</div>
+{% endblock %}

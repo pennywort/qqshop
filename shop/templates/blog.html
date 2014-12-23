@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for post in object_list %}
+<div class="mainContent">
+<div class= "content">
+<h3><a href="/shop/{{post.id}}">{{ post.title }}</a></h3>
+<div class = "post_meta">
+	добавлено {{ post.date }}
+</div>
+
+<div class="post_body">
+<img src="{{ MEDIA_URL }}{{post.photo}}" />
+ {{ post.body|safe|linebreaks }}
+</div>
+</div>
+</div>
+{% endfor %}
+{% endblock %}

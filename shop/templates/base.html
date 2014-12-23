@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+	<head>
+		<title></title>
+		<meta charset = "utf-8"/>
+		<link rel = "stylesheet" href = "/static/css/styles.css"/>
+		<meta name = "viewport content = " width-device-width, initial-scale = 0.1" />
+	</head>
+	<body class="body"> 
+		<header class="mainHead">
+			<img src="/static/img/logo.jpg" width="700" height="423"/>
+			<nav>
+				<ul>
+					<li><a href="/shop">Магазин</a></li>
+					<li><a href="/shop/order/">Оформление заказа</a></li>
+					<li><a href="#">Контакты</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<aside class = "sideInfo">
+			<article>
+				<h3>Партнёры</h3>
+				<p> Место для вашей рекламы </p>
+			</article>
+		</aside>
+		
+		<div class = "mainContent">
+		{% block content %}
+		
+		{% endblock %}
+		</div>
+		
+		<footer class="mainFooter">
+			<p> copyright</p>
+		</footer>
+		
+	</body>
+</html>
