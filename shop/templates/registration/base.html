@@ -1,3 +1,5 @@
+{% load i18n %}
+{% load staticfiles %}
 <!doctype html>
 <html>
 	<head>
@@ -14,7 +16,18 @@
 					<li><a href="/shop">Магазин</a></li>
 					<li><a href="/shop/order/">Оформление заказа</a></li>
 					<li><a href="/accounts/register">Регистрация</a></li>
+					{% if request.user.is_authenticated %} 
+					<li><a href="/accounts/logout">Выйти: {{ request.user.username }}</a></li>
+					{% else %}
+				
+					<li><a href="/accounts/login">Войти</a></li>
+					{% endif %}
+					
+					
+			
+				
 				</ul>
+				
 			</nav>
 		</header>
 		
@@ -22,12 +35,13 @@
 			<article>
 				<h3>Партнёры</h3>
 				<p> Место для вашей рекламы </p>
+			
 			</article>
 		</aside>
 		
 		<div class = "mainContent">
 		{% block content %}
-		
+			
 		{% endblock %}
 		</div>
 		
