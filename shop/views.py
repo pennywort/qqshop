@@ -21,4 +21,13 @@ def add(request):
 			cart.save()
 			order.products.add(cart) 
 			order.save()
+			spy = spyon(remoteIp=request.META['REMOTE_ADDR'], browser=request.META['HTTP_USER_AGENT'])
+			spy.save()
 			return redirect('shop.views.add')
+	else:
+			userName = User.objects.get(username=request.user.username)
+			order = Order.objects.get(user=userName)
+			totalPrice = order.get_total_price()
+			spy = spyon(remoteIp=request.META['REMOTE_ADDR'], browser=request.META['HTTP_USER_AGENT'])
+			spy.save()
+			return render_to_response('cart.html', locals(), context_instance = RequestContext(request))	
