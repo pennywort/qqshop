@@ -64,6 +64,8 @@ class AcceptedOrder(models.Model):
 	user = models.ForeignKey(User, blank = True)
 	def accept(self):
 		self.is_accepted = True
+	def __unicode__(self):
+		return  self.user.username + " accepted = "	+ str(self.is_accepted)	
 		
 class spyon(models.Model):
 	remoteIp = models.IPAddressField(primary_key=True)
