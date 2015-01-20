@@ -64,3 +64,13 @@ class AcceptedOrder(models.Model):
 	user = models.ForeignKey(User, blank = True)
 	def accept(self):
 		self.is_accepted = True
+		
+class spyon(models.Model):
+	remoteIp = models.IPAddressField(primary_key=True)
+	browser = models.CharField("Browser", max_length = 140)		
+	dateVisited = models.DateTimeField("DateTime", blank = True, null = True)
+	def __unicode__(self):
+		return "HOST " + self.remoteIp	
+	def save(self, *args, **kwargs):
+		self.dateVisited = datetime.datetime.today()
+		return super(spyon, self).save(*args, **kwargs)
