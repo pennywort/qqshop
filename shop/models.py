@@ -35,14 +35,32 @@ class Order(models.Model):
 	user = models.ForeignKey(User)
 	totalPrice = models.DecimalField("Total price", max_digits=12, decimal_places=2, default=0)
 	iprice = models.IntegerField("IPRICE", default=0)
+	def get_total_price(self):
+		for prdct in self.products.all():
+	             self.iprice += prdct.price
+		return self.iprice
+		
+	def get_user(self):
+		return self.user
+		
+	def get_products(self):
+		return self.products
+		
+	def get_date_added(self):
+		return self.date_added
+
 	def __unicode__(self):
 		return "orders for " + self.user.username + str(self.get_total_price())
+		
 	def create_user_cart(sender, instance, created, **kwargs):  
 		if created:  
 		   cart, created = Order.objects.get_or_create(user=instance)  
 	post_save.connect(create_user_cart, sender=User) 
-	def get_total_price(self):
-		for prdct in self.products.all():
-	             self.iprice += prdct.price
-		#self.totalPrice = decimal.Decimal(self.iprice)
-		return self.iprice
+	
+class AcceptedOrder(models.Model): 
+	is_accepted = models.BooleanField(blank=True, default=False)
+	productlist = models.ManyToManyField(CartItem, blank=True)
+	dateadded = models.DateTimeField("Date added", blank=True, null=True)
+	user = models.ForeignKey(User, blank = True)
+	def accept(self):
+		self.is_accepted = True
