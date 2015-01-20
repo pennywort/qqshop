@@ -1,7 +1,6 @@
 {% extends "registration/base.html" %}
 {% block content %}
 
-<h3><a href="/shop/{{post.id}}">{{ post.title }}</a></h3>
 <div class="mainContent">
 <div class= "content">
 <div class = "post_meta">
@@ -12,6 +11,12 @@
  <p class = "bold">{{ post.body|safe|linebreaks }} </p>
  {{ post.description|safe|linebreaks }}
   <p>Цена: {{ post.priceOfProduct}} руб.</p>
+ 
+<form action="/shop/add/" method="post"> {% csrf_token %}
+	<input class = "btn" type="submit" name="sendButton" value="В корзину"></input>  
+	<input id="article" type="hidden" name="article" value="{{post.id }}"></input> 
+	<input id="userName" type="hidden" name="userName" value="{{request.user.username}}"></input>
+</form>
 </div>
 </div>
 </div>
