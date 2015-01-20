@@ -1,21 +1,15 @@
 from django.db import models
 from django.contrib import admin
 class Post(models.Model):
-	title = models.CharField(max_length = 140)
-	body = models.TextField()
-	description = models.TextField(blank = True)
-	date = models.DateTimeField(blank = True)
-	photo = models.ImageField(upload_to='upload/', blank=True)
-	def __unicode(self):
-		return self.title
-		
-class Image(models.Model):
-    Post = models.ForeignKey(Post)
-    image = models.ImageField()
-	
-class InlineImage(admin.TabularInline):
-    model = Image
-	
-class PostAdmin(admin.ModelAdmin):
-    inlines = [InlineImage]
+	id = models.AutoField(primary_key=True)
+	title = models.CharField("Product name", max_length = 140)
+	articleNumber = models.CharField("Article number", max_length = 20)
+	body = models.TextField("Short description")
+	description = models.TextField("Full description", blank = True)
+	date = models.DateTimeField("Adding date", blank = True)
+	photo = models.ImageField("Product photo", upload_to='upload/', blank=True)
+	priceOfProduct = models.DecimalField(max_digits=12, decimal_places=2)
+	def __unicode__(self):
+		return self.title + " " + self.articleNumber
+
 
