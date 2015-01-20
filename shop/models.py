@@ -21,4 +21,12 @@ class CartItem(models.Model):
 	price =  models.DecimalField(max_digits=12, decimal_places=2, blank=False)
 	def __unicode__(self):
 		return "cart for " + self.user.username
-
+	
+class Order(models.Model):
+	products = models.ManyToManyField(CartItem, blank=True)
+	date_added = models.DateTimeField(auto_now_add = True)
+	user = models.ForeignKey(User)
+	totalPrice = models.DecimalField("Total price", max_digits=12, decimal_places=2, default=0)
+	iprice = models.IntegerField("IPRICE", default=0)
+	def __unicode__(self):
+		return "orders for " + self.user.username + str(self.get_total_price())
