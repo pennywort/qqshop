@@ -12,6 +12,12 @@
 <div class="post_body">
 <img src="{{ MEDIA_URL }}{{post.photo}}" />
  {{ post.body|safe|linebreaks }}
+ <p>Цена: {{ post.priceOfProduct}} руб.</p>
+<form action="/shop/add/" method="post"> {% csrf_token %}
+	<input class = "btn" type="submit" name="sendButton" value="В корзину"></input>  
+	<input id="article" type="hidden" name="article" value="{{post.id }}"></input> 
+	<input id="userName" type="hidden" name="userName" value="{{request.user.username}}"></input>
+</form>
 </div>
 </div>
 </div>
