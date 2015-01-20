@@ -27,20 +27,31 @@
 		
 		<aside class = "sideInfo">
 			<article>
+				{% if totalPrice > 0 %}
+				<h3 class="centered">Корзина</h3>
 				
+					<p class=centered>Вы заказали на</p><p class="colored"> {{ totalPrice }}</p>
+					<form class = "centered" action="/shop/accept/" method="post"> {% csrf_token %}
+						<input class = "btnDel centered" type="submit" name="sendButton" value="Заказать"></input>  
+						<input id="userName" type="hidden" name="userName" value="{{request.user.username}}"></input>
+					</form>
+				
+				{% else %}
 				<h3 class="centered">Достоверно</h3>
 				<p class="centered"> 
 					Курс Евро - 10540 рублей
 					Курс Доллара - 931421 рублей
 				</p>
-
+				{% endif %}
 			</article>
 		</aside>
+		
 		<div class = "mainContent">
 		{% block content %}
 			
 		{% endblock %}
 		</div>
+		
 		<footer class="mainFooter">
 			<p>
 			Привет
