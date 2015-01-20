@@ -116,3 +116,11 @@ a:hover, a:active{
   background: #797979;
   text-decoration: none;
 }
+input[type=submit] {
+	padding:5px 15px; 
+	width: 100px;
+	border:0 none;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 5px; 
+}
