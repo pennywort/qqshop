@@ -96,3 +96,23 @@ a:hover, a:active{
 	margin: 1% auto;
 	color: white;
 }
+.btnDel {
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  margin-top: 1%;
+  box-shadow: none;
+  width: 100px;
+  text-align:center;
+  border-radius: 7px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  background: #3cb0fd;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+.btnDel:hover {
+  box-shadow: none;
+  background: #797979;
+  text-decoration: none;
+}
