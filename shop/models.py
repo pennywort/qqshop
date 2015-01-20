@@ -1,5 +1,12 @@
 from django.db import models
 from django.contrib import admin
+from django.db import models
+from django.contrib import admin
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+import datetime
+import decimal
+
 class Post(models.Model):
 	id = models.AutoField(primary_key=True)
 	title = models.CharField("Product name", max_length = 140)
@@ -30,3 +37,12 @@ class Order(models.Model):
 	iprice = models.IntegerField("IPRICE", default=0)
 	def __unicode__(self):
 		return "orders for " + self.user.username + str(self.get_total_price())
+	def create_user_cart(sender, instance, created, **kwargs):  
+		if created:  
+		   cart, created = Order.objects.get_or_create(user=instance)  
+	post_save.connect(create_user_cart, sender=User) 
+	def get_total_price(self):
+		for prdct in self.products.all():
+	             self.iprice += prdct.price
+		#self.totalPrice = decimal.Decimal(self.iprice)
+		return self.iprice
