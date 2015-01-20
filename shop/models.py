@@ -30,3 +30,12 @@ class Order(models.Model):
 	iprice = models.IntegerField("IPRICE", default=0)
 	def __unicode__(self):
 		return "orders for " + self.user.username + str(self.get_total_price())
+	def create_user_cart(sender, instance, created, **kwargs):  
+		if created:  
+		   cart, created = Order.objects.get_or_create(user=instance)  
+	post_save.connect(create_user_cart, sender=User) 
+	def get_total_price(self):
+		for prdct in self.products.all():
+	             self.iprice += prdct.price
+		#self.totalPrice = decimal.Decimal(self.iprice)
+		return self.iprice
