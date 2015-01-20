@@ -1,0 +1,25 @@
+{% extends "registration/base.html" %}
+{% block content %}
+
+{% for orderItem in order.products.all %}
+<div class="mainContent">
+<div class="content">
+       <p> {{ orderItem.product }} </p>
+	    <p> {{ orderItem.product.priceOfProduct }} руб.</p>
+		Количество: {{ orderItem.quantity }} <img src="{{ MEDIA_URL }}{{orderItem.product.photo}}"/>
+<form action="/shop/del/" method="post"> {% csrf_token %}
+	<input class = "btnDel" type="submit" name="sendButton" value="Удалить"></input>  
+	<input id="article" type="hidden" name="article" value="{{orderItem.product.id}}"></input> 
+	<input id="userName" type="hidden" name="userName" value="{{request.user.username}}"></input>
+	<input id="deleteID" type="hidden" name="deleteID" value="{{orderItem.cartid}}"></input> 
+</form>
+</div>
+</div>
+
+{% endfor %}
+
+{% if order.products.all.count == 0 %} 
+
+<p> Вы не добавили ни одного товара! </p>
+{% endif %}
+{% endblock %}
