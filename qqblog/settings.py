@@ -11,9 +11,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-#MEDIA_ROOT = 'media/'
-#MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '..', 'media').replace('\\','/')
-#MEDIA_URL = '/media/' 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 # Quick-start development settings - unsuitable for production
@@ -29,14 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-#ACCOUNT_ACTIVATION_DAYS = 2
-#AUTH_USER_EMAIL_UNIQUE = True
-#EMAIL_HOST = 'localhost'
-#EMAIL_PORT = 1025
-#EMAIL_HOST_USER = ''
-#EMAIL_HOST_PASSWORD = ''
-#EMAIL_USE_TLS = False
-#DEFAULT_FROM_EMAIL = 'info@meeq.ru'
+AUTH_PROFILE_MODULE = 'shop.CartItem'
 REGISTRATION_OPEN = True                # If True, users can register
 ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course, use a different value.
 REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.
@@ -53,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 	'shop',
 	'registration',
+	'cart',
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
