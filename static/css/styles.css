@@ -96,6 +96,27 @@ a:hover, a:active{
 	margin: 1% auto;
 	color: white;
 }
+.btn {
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  margin-top: 1%;
+  box-shadow: none;
+  width: 100px;
+  text-align:center;
+  border-radius: 7px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  background: #797979;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  box-shadow: none;
+  background: #3cb0fd;
+  text-decoration: none;
+}
 .btnDel {
   -webkit-border-radius: 7;
   -moz-border-radius: 7;
@@ -115,4 +136,12 @@ a:hover, a:active{
   box-shadow: none;
   background: #797979;
   text-decoration: none;
+}
+input[type=submit] {
+	padding:5px 15px; 
+	width: 100px;
+	border:0 none;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 5px; 
 }
