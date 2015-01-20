@@ -11,5 +11,14 @@ class Post(models.Model):
 	priceOfProduct = models.DecimalField(max_digits=12, decimal_places=2)
 	def __unicode__(self):
 		return self.title + " " + self.articleNumber
-
+		
+class CartItem(models.Model):
+	cart_id = models.AutoField(primary_key=True)
+	cartid = models.CharField(max_length = 20)
+	quantity = models.IntegerField(default = 0)
+	product = models.ForeignKey(Post)
+	user = models.ForeignKey(User)
+	price =  models.DecimalField(max_digits=12, decimal_places=2, blank=False)
+	def __unicode__(self):
+		return "cart for " + self.user.username
 
