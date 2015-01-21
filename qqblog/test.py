@@ -2,6 +2,7 @@ from django.db import IntegrityError
 from django.test import TestCase
 from shop.models import Post
 from shop.models import CartItem
+from shop.models import Order
 
 class ProductTest(TestCase):
   def test_post(self):
@@ -20,3 +21,13 @@ class CartItemTest(TestCase):
       p = CartItem.objects.create(
         product = Post(),
       )
+	  
+class OrderTest(TestCase):	  
+  def test_order(self):
+    p = Order(
+        date_added = datetime.datetime.today(),
+		user = User()
+		)
+    now = datetime.datetime.today()
+    self.assertEqual(p.date_added, now )
+
