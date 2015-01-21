@@ -12,3 +12,4 @@ mccabe==0.2.1
 pep8==1.5.7
 pyflakes==0.8.1
 six==1.8.0
+pillow>=2.4.0
