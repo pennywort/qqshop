@@ -31,5 +31,5 @@ class OrderTest(TestCase):
         date_added = datetime.datetime.today(),
 		user = User(username="tester")
 		)
-    self.assertNotEqual(p.get_user(), "tester" )
+    self.assertEqual(p.get_user(), "tester" )
 
