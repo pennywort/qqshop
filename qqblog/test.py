@@ -3,7 +3,7 @@ from django.test import TestCase
 from shop.models import Post
 from shop.models import CartItem
 from shop.models import Order
-
+import datetime
 class ProductTest(TestCase):
   def test_post(self):
     with self.assertRaises(IntegrityError):
