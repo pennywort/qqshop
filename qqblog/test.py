@@ -29,8 +29,7 @@ class OrderTest(TestCase):
   def test_order(self):
     p = Order(
         date_added = datetime.datetime.today(),
-		user = User()
+		user = User(username="tester")
 		)
-    now = datetime.datetime.today()
-    self.assertEqual(p.date_added, now )
+    self.assertNotEqual(p.get_user(), "tester" )
 

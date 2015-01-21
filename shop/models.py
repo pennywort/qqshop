@@ -41,7 +41,7 @@ class Order(models.Model):
 		return self.iprice
 		
 	def get_user(self):
-		return self.user
+		return self.user.username
 		
 	def get_products(self):
 		return self.products
