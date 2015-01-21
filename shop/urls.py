@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = patterns('',
 					    url(r'^$', login_required(ListView.as_view(
 						   queryset=Post.objects.all().order_by("-date")[:10],
-						   template_name="blog.html"))),
+						   template_name="shop.html"))),
 						   
 					    url(r'^(?P<pk>\d+)$', login_required(DetailView.as_view(
 						   model = Post,
