@@ -43,7 +43,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 	'shop',
 	'registration',
-	'cart',
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
