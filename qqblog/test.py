@@ -1,9 +1,12 @@
 from django.db import IntegrityError
 from django.test import TestCase
+import datetime
+from django.contrib.auth.models import User
 from shop.models import Post
 from shop.models import CartItem
 from shop.models import Order
-import datetime
+from shop.models import AcceptedOrder
+
 class ProductTest(TestCase):
   def test_post(self):
     with self.assertRaises(IntegrityError):
