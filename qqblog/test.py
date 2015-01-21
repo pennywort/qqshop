@@ -17,19 +17,23 @@ class ProductTest(TestCase):
       p = Post.objects.create(
         priceOfProduct = 2391.01
       )
-	  
+      
 class CartItemTest(TestCase):
   def test_cart_item(self):
     with self.assertRaises(IntegrityError):
       p = CartItem.objects.create(
         product = Post(),
       )
-	  
-class OrderTest(TestCase):	  
+      
+class OrderTest(TestCase):      
   def test_order(self):
     p = Order(
         date_added = datetime.datetime.today(),
-		user = User(username="tester")
-		)
+        user = User(username="tester")
+        )
     self.assertEqual(p.get_user(), "tester" )
-
+class AcceptedOrderTest(TestCase):
+  def test_(self):        
+      obj = AcceptedOrder()
+      obj.accept()
+      self.assertEqual(obj.is_accepted, True)
